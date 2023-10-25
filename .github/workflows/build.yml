@@ -1,0 +1,74 @@
+name: Build-and-deploy
+# run-name: Deploy to ${{ inputs.deploy_target }} by @${{ github.actor }}
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - "**.md"
+      - "**.spec.js"
+      - ".idea"
+      - ".vscode"
+      - ".dockerignore"
+      - "Dockerfile"
+      - ".gitignore"
+      - ".github/**"
+      - "!.github/workflows/build.yml"
+
+# 如果您不提供带有访问令牌或SSH密钥的操作，则必须访问您的存储库设置并将Read and Write Permissions提供给所提供的GITHUB_TOKEN，
+# 否则可能会遇到权限问题。或者，您可以在工作流文件中设置以下内容，以授予操作所需的权限。https://github.com/JamesIves/github-pages-deploy-action
+permissions:
+  contents: write
+
+jobs:
+  build-release-files:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18  
+
+      - name: Install Dependencies
+        run: npm install 
+
+      - name: Build Release Files
+        run: npm run build
+      
+      - name: Test
+        run: ls
+      
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist/
+
+      # - name: Upload Artifact
+      #   uses: actions/upload-artifact@v3
+      #   with:
+      #     name: build_on_${{ matrix.os }}
+      #     path: dist/
+      #     retention-days: 5
+  
+  deploy-on-github:
+    needs: build-release-files
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Test
+        run: ls
+      # - name: Deploy
+      #   uses: JamesIves/github-pages-deploy-action@v4
+      #   with:
+      #     folder: dist/
+
+      # 默认是部署到 gh-pages 分支上，如果分支不存在会自动创建，可以在with下面添加branch参数来指定部署到哪个分支上
+      # 在部署之前需要包含actions/checkout步骤
