@@ -17,6 +17,36 @@ If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has a
    2. Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
 2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
 
+
+## How to use?
+
+1. **Clone the repository**:
+
+```bash
+git clone https://github.com/id88/vite-vue-ts-element.git
+
+cd vite-vue-ts-element
+```
+
+2. **Install dependencies**:
+
+```bash
+npm install
+```
+
+3. **Run the development server**:
+
+- use npm:
+```bash
+npm run dev
+```
+
+- or use npx:
+```bash
+npx vite
+```
+
+
 ## 如何更新项目中的组件
 
 要检查你的依赖和开发依赖是否有更新的稳定版本，可以使用以下方法：
