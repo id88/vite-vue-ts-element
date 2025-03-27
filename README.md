@@ -124,7 +124,7 @@ npm show pinia version
 ### 建议的更新流程
 1. 运行以下命令更新所有依赖到最新版本：
    ```bash
-   npm install element-plus@latest pinia@latest vue@latest vite@latest @vitejs/plugin-vue@latest
+   npm install element-plus@latest pinia@latest vue@latest vite@latest @vitejs/plugin-vue@latest @types/node@latest typescript@latest vue-tsc@latest unplugin-auto-import@latest unplugin-vue-components@latest
    ```
 2. 更新后测试项目运行是否正常（例如 `npm run dev`）。
 3. 如果发现不兼容的情况，查看更新日志（Changelog）或迁移指南，按照指引进行调整。

@@ -10,17 +10,17 @@
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.1.0",
-    "@types/node": "^20.8.8",
-    "element-plus": "^2.9.0",
-    "pinia": "^2.3.0",
+    "@types/node": "^22.13.14",
+    "element-plus": "^2.9.7",
+    "pinia": "^3.0.1",
     "vue": "^3.5.13"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^5.2.1",
-    "typescript": "^5.0.2",
-    "unplugin-auto-import": "^0.16.6",
-    "unplugin-vue-components": "^0.25.2",
-    "vite": "^6.0.3",
-    "vue-tsc": "^1.8.5"
+    "@vitejs/plugin-vue": "^5.2.3",
+    "typescript": "^5.8.2",
+    "unplugin-auto-import": "^19.1.2",
+    "unplugin-vue-components": "^28.4.1",
+    "vite": "^6.2.3",
+    "vue-tsc": "^2.2.8"
   }
 }
