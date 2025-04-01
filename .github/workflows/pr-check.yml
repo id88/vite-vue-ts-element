@@ -1,0 +1,70 @@
+# PR 构建检查工作流
+name: PR Build Check
+
+# 触发条件：当创建或更新 pull request 时
+on:
+  pull_request:
+    # 只在这些分支的 PR 时触发
+    branches: [ main ]
+    # 忽略这些文件的变更
+    paths-ignore:
+      - "**.md"
+      - ".idea"
+      - ".vscode"
+      - ".dockerignore"
+      - "Dockerfile"
+      - ".gitignore"
+      - ".github/**"
+      - "!.github/workflows/**"
+
+jobs:
+  # 构建检查任务
+  build-check:
+    name: Build Check
+    runs-on: ubuntu-latest
+
+    steps:
+      # 步骤1：检出代码
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      # 步骤2：设置 Node.js 环境
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          # 启用依赖缓存
+          cache: 'npm'
+
+      # 步骤3：安装依赖
+      - name: Install Dependencies
+        run: npm install
+
+      # 步骤4：运行构建
+      - name: Build Project
+        run: npm run build
+
+      # 步骤5：添加构建结果评论
+      - name: Add PR Comment
+        uses: actions/github-script@v6
+        if: always()
+        with:
+          script: |
+            const buildStatus = process.env.BUILD_STATUS === '0' ? '✅ 构建成功' : '❌ 构建失败';
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `## 构建检查结果\n${buildStatus}\n\n构建时间：${new Date().toLocaleString()}`
+            })
+        env:
+          BUILD_STATUS: ${{ job.status == 'success' && '0' || '1' }} 
+
+# 还需要在仓库中设置分支保护规则，以确保只有构建检查通过的 PR 才能被合并。您需要在 GitHub 仓库中进行以下设置：
+# 进入仓库的 Settings → Branches
+# 在 "Branch protection rules" 部分点击 "Add rule"
+# 在 "Branch name pattern" 中输入 main
+# 勾选以下选项：
+# ✓ Require a pull request before merging
+# ✓ Require status checks to pass before merging
+# ✓ 在状态检查列表中选择 "Build Check"（这个选项会在第一次 PR 构建后出现）
