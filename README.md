@@ -128,3 +128,7 @@ npm show pinia version
    ```
 2. 更新后测试项目运行是否正常（例如 `npm run dev`）。
 3. 如果发现不兼容的情况，查看更新日志（Changelog）或迁移指南，按照指引进行调整。
+
+### 使用 GitHub 的 Dependabot 自动检查更新
+
+https://docs.github.com/zh/code-security/getting-started/dependabot-quickstart-guide

@@ -1,0 +1,13 @@
+# Basic `dependabot.yml` file with
+# https://docs.github.com/zh/code-security/dependabot/dependabot-version-updates/configuring-dependabot-version-updates#example-dependabotyml-file
+# https://docs.github.com/zh/code-security/dependabot/working-with-dependabot/dependabot-options-reference#ignore
+
+version: 2
+updates:
+  # Enable version updates for npm
+  - package-ecosystem: "npm"
+    # Look for `package.json` and `lock` files in the `root` directory
+    directory: "/"
+    # run on the first day of each month
+    schedule:
+      interval: "monthly"
