@@ -23,9 +23,6 @@ jobs:
     name: Build Check
     runs-on: ubuntu-latest
 
-    permissions:
-      pull-requests: write
-
     steps:
       # 步骤1：检出代码
       - name: Checkout Code
