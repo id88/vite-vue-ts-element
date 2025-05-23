@@ -1,3 +1,8 @@
+# Add permissions at the top level of the workflow
+permissions:
+  pull-requests: write
+  contents: read
+
 # PR 构建检查工作流
 name: PR Build Check
 
@@ -22,9 +27,6 @@ jobs:
   build-check:
     name: Build Check
     runs-on: ubuntu-latest
-
-    permissions:
-      pull-requests: write
 
     steps:
       # 步骤1：检出代码
