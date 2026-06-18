@@ -38,13 +38,13 @@ jobs:
     steps:
       # 步骤1：检出代码
       - name: Checkout Code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       # 步骤2：设置 Node.js 环境
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: 18  
+          node-version: 20  
 
       # 步骤3：安装项目依赖
       - name: Install Dependencies

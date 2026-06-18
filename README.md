@@ -113,11 +113,11 @@ npm show pinia version
 
 | Package                 | Current   | Latest    | Update Command                     |
 |-------------------------|-----------|-----------|-------------------------------------|
-| `element-plus`          | `2.4.1`   | `2.5.14`  | `npm install element-plus@latest`  |
-| `pinia`                 | `2.1.7`   | `2.1.10`  | `npm install pinia@latest`         |
-| `vue`                   | `3.3.4`   | `3.4.1`   | `npm install vue@latest`           |
-| `@vitejs/plugin-vue`    | `4.2.3`   | `4.3.1`   | `npm install @vitejs/plugin-vue@latest` |
-| `vite`                  | `4.4.5`   | `4.5.3`   | `npm install vite@latest`          |
+| `element-plus`          | `2.14.2`  | `2.14.2`  | `npm install element-plus@latest`  |
+| `pinia`                 | `3.0.4`   | `3.0.4`   | `npm install pinia@latest`         |
+| `vue`                   | `3.5.38`  | `3.5.38`  | `npm install vue@latest`           |
+| `@vitejs/plugin-vue`    | `5.2.4`   | `6.0.7`   | `npm install @vitejs/plugin-vue@latest` |
+| `vite`                  | `6.4.3`   | `8.0.16`  | `npm install vite@latest`          |
 
 ---
 
